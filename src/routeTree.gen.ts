@@ -13,6 +13,7 @@ import { Route as ResearchRouteImport } from './routes/research'
 import { Route as PhdRouteImport } from './routes/phd'
 import { Route as MasterRouteImport } from './routes/master'
 import { Route as BooksRouteImport } from './routes/books'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ResearchRoute = ResearchRouteImport.update({
@@ -35,6 +36,11 @@ const BooksRoute = BooksRouteImport.update({
   path: '/books',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/books': typeof BooksRoute
   '/master': typeof MasterRoute
   '/phd': typeof PhdRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/books': typeof BooksRoute
   '/master': typeof MasterRoute
   '/phd': typeof PhdRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/books': typeof BooksRoute
   '/master': typeof MasterRoute
   '/phd': typeof PhdRoute
@@ -65,14 +74,15 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/books' | '/master' | '/phd' | '/research'
+  fullPaths: '/' | '/admin' | '/books' | '/master' | '/phd' | '/research'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/books' | '/master' | '/phd' | '/research'
-  id: '__root__' | '/' | '/books' | '/master' | '/phd' | '/research'
+  to: '/' | '/admin' | '/books' | '/master' | '/phd' | '/research'
+  id: '__root__' | '/' | '/admin' | '/books' | '/master' | '/phd' | '/research'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   BooksRoute: typeof BooksRoute
   MasterRoute: typeof MasterRoute
   PhdRoute: typeof PhdRoute
@@ -109,6 +119,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BooksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -121,6 +138,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   BooksRoute: BooksRoute,
   MasterRoute: MasterRoute,
   PhdRoute: PhdRoute,
