@@ -35,9 +35,13 @@ export const Route = createRootRoute({
       { title: "مكتبة قسم تكنولوجيا التعليم" },
       { name: "description", content: "نظام إدارة مكتبة قسم تكنولوجيا التعليم — رسائل، كتب، وأبحاث علمية." },
       { property: "og:title", content: "مكتبة قسم تكنولوجيا التعليم" },
-      { property: "og:description", content: "نظام إدارة مكتبة قسم تكنولوجيا التعليم." },
+      { property: "og:description", content: "نظام إدارة مكتبة قسم تكنولوجيا التعليم — رسائل، كتب، وأبحاث علمية." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "مكتبة قسم تكنولوجيا التعليم" },
+      { name: "twitter:description", content: "نظام إدارة مكتبة قسم تكنولوجيا التعليم — رسائل، كتب، وأبحاث علمية." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fc4d1209-8cc1-413b-b914-b183f0cbeab2/id-preview-950f9f84--fb97fb8b-e56e-4e9e-94aa-502e5d7f1f17.lovable.app-1777018550015.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fc4d1209-8cc1-413b-b914-b183f0cbeab2/id-preview-950f9f84--fb97fb8b-e56e-4e9e-94aa-502e5d7f1f17.lovable.app-1777018550015.png" },
     ],
     links: [
       {
