@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { BookOpen, GraduationCap, FlaskConical, Library, Shield, Home } from "lucide-react";
+import { BookOpen, GraduationCap, FlaskConical, Shield, Home } from "lucide-react";
 import facultyLogo from "@/assets/faculty-logo.jpeg";
 
 const links = [
