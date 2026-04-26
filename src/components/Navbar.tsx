@@ -20,7 +20,7 @@ export function Navbar() {
           </div>
           <div className="hidden sm:block">
             <div className="text-sm font-bold leading-tight text-foreground">مكتبة قسم تكنولوجيا التعليم</div>
-            <div className="text-[11px] text-muted-foreground">كلية التربية</div>
+            <div className="text-[11px] text-muted-foreground">كلية التربية النوعية</div>
           </div>
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
