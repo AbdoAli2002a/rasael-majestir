@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { BookOpen, GraduationCap, FlaskConical, Library, Shield, Home } from "lucide-react";
+import facultyLogo from "@/assets/faculty-logo.jpeg";
 
 const links = [
   { to: "/", label: "الرئيسية", icon: Home },
@@ -14,8 +15,8 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-border bg-card/80 backdrop-blur-md shadow-[var(--shadow-card)]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
         <Link to="/" className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[image:var(--gradient-hero)] text-primary-foreground shadow-[var(--shadow-elegant)]">
-            <Library className="h-5 w-5" />
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-primary/25 bg-card shadow-[var(--shadow-elegant)]">
+            <img src={facultyLogo} alt="شعار كلية التربية النوعية جامعة المنيا" className="h-full w-full object-cover" />
           </div>
           <div className="hidden sm:block">
             <div className="text-sm font-bold leading-tight text-foreground">مكتبة قسم تكنولوجيا التعليم</div>
