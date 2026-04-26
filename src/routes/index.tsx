@@ -28,10 +28,10 @@ function Home() {
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
               <Library className="h-7 w-7" />
             </div>
-            <span className="text-sm opacity-90">كلية التربية — قسم تكنولوجيا التعليم</span>
+            <span className="text-sm opacity-90">كلية التربية النوعية — قسم تكنولوجيا التعليم</span>
           </div>
           <h1 className="max-w-3xl text-4xl font-bold leading-tight md:text-6xl">
-            بوابة المكتبة الرقمية للبحث العلمي
+            بوابة المكتبة الرقمية للبحث العلمي والطلاب
           </h1>
           <p className="mt-4 max-w-2xl text-lg opacity-90">
             استعرض الرسائل العلمية، الكتب، والأبحاث المنشورة، واطلب استعارتها بسهولة في خطوات بسيطة.
