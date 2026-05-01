@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Search, BookOpen, User, Calendar } from "lucide-react";
 import { ITEM_TYPES, type ItemType, type LibraryItem } from "@/lib/library";
 import { BorrowDialog } from "./BorrowDialog";
+import { CitationDialog } from "./CitationDialog";
 
 export function CategoryView({ type }: { type: ItemType }) {
   const [items, setItems] = useState<LibraryItem[]>([]);
@@ -81,7 +82,10 @@ export function CategoryView({ type }: { type: ItemType }) {
                 {it.supervisors && <p className="text-xs text-muted-foreground">المشرفون: {it.supervisors}</p>}
                 {it.publisher && <p className="text-xs text-muted-foreground">{it.publication_place ? `${it.publication_place} — ` : ""}{it.publisher}</p>}
                 {it.journal_name && <p className="text-xs text-muted-foreground">{it.journal_name}{it.volume ? ` — مج ${it.volume}` : ""}{it.issue ? ` ع ${it.issue}` : ""}</p>}
-                <Button onClick={() => setPicked(it)} className="mt-3 w-full" variant="default">استعارة</Button>
+                <div className="mt-3 grid gap-2">
+                  <Button onClick={() => setPicked(it)} className="w-full" variant="default">استعارة</Button>
+                  <CitationDialog item={it} />
+                </div>
               </CardContent>
             </Card>
           ))}
