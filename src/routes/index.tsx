@@ -26,7 +26,7 @@ function Home() {
         <div className="relative mx-auto max-w-7xl px-4 py-20 text-primary-foreground md:px-6 md:py-28">
           <div className="flex items-center gap-3 mb-6">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
-              <Library className="h-7 w-7" />
+              <Library className="h-7 w-7" aria-hidden="true" />
             </div>
             <span className="text-sm opacity-90">كلية التربية النوعية — قسم تكنولوجيا التعليم</span>
           </div>
@@ -37,8 +37,8 @@ function Home() {
             استعرض الرسائل العلمية، الكتب، والأبحاث المنشورة، واطلب استعارتها بسهولة في خطوات بسيطة.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/books" className="rounded-lg bg-white px-6 py-3 font-semibold text-primary shadow-[var(--shadow-elegant)] transition hover:opacity-90">تصفح الكتب</Link>
-            <Link to="/research" className="rounded-lg border border-white/30 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur transition hover:bg-white/20">الأبحاث العلمية</Link>
+            <Link to="/books" className="rounded-lg bg-white px-6 py-3 font-semibold text-primary shadow-[var(--shadow-elegant)] transition hover:opacity-90 outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">تصفح الكتب</Link>
+            <Link to="/research" className="rounded-lg border border-white/30 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur transition hover:bg-white/20 outline-none focus-visible:ring-2 focus-visible:ring-white">الأبحاث العلمية</Link>
           </div>
         </div>
       </section>
@@ -47,9 +47,14 @@ function Home() {
         <h2 className="mb-8 text-2xl font-bold text-foreground md:text-3xl">أقسام المكتبة</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {cats.map((c) => (
-            <Link key={c.to} to={c.to} className="group rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]">
+            <Link
+              key={c.to}
+              to={c.to}
+              aria-label={`${c.title} — ${c.desc}`}
+              className="group rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)] outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
-                <c.icon className="h-6 w-6" />
+                <c.icon className="h-6 w-6" aria-hidden="true" />
               </div>
               <h3 className="text-lg font-bold text-foreground">{c.title}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
