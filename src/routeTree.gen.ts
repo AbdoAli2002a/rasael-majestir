@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as PhdRouteImport } from './routes/phd'
 import { Route as MasterRouteImport } from './routes/master'
+import { Route as FreeEduTechBooksRouteImport } from './routes/free-edu-tech-books'
 import { Route as EduTechResearchRouteImport } from './routes/edu-tech-research'
 import { Route as BooksRouteImport } from './routes/books'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -30,6 +31,11 @@ const PhdRoute = PhdRouteImport.update({
 const MasterRoute = MasterRouteImport.update({
   id: '/master',
   path: '/master',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeEduTechBooksRoute = FreeEduTechBooksRouteImport.update({
+  id: '/free-edu-tech-books',
+  path: '/free-edu-tech-books',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EduTechResearchRoute = EduTechResearchRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/books': typeof BooksRoute
   '/edu-tech-research': typeof EduTechResearchRoute
+  '/free-edu-tech-books': typeof FreeEduTechBooksRoute
   '/master': typeof MasterRoute
   '/phd': typeof PhdRoute
   '/research': typeof ResearchRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/books': typeof BooksRoute
   '/edu-tech-research': typeof EduTechResearchRoute
+  '/free-edu-tech-books': typeof FreeEduTechBooksRoute
   '/master': typeof MasterRoute
   '/phd': typeof PhdRoute
   '/research': typeof ResearchRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/books': typeof BooksRoute
   '/edu-tech-research': typeof EduTechResearchRoute
+  '/free-edu-tech-books': typeof FreeEduTechBooksRoute
   '/master': typeof MasterRoute
   '/phd': typeof PhdRoute
   '/research': typeof ResearchRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/books'
     | '/edu-tech-research'
+    | '/free-edu-tech-books'
     | '/master'
     | '/phd'
     | '/research'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/books'
     | '/edu-tech-research'
+    | '/free-edu-tech-books'
     | '/master'
     | '/phd'
     | '/research'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/books'
     | '/edu-tech-research'
+    | '/free-edu-tech-books'
     | '/master'
     | '/phd'
     | '/research'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   BooksRoute: typeof BooksRoute
   EduTechResearchRoute: typeof EduTechResearchRoute
+  FreeEduTechBooksRoute: typeof FreeEduTechBooksRoute
   MasterRoute: typeof MasterRoute
   PhdRoute: typeof PhdRoute
   ResearchRoute: typeof ResearchRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/master'
       fullPath: '/master'
       preLoaderRoute: typeof MasterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free-edu-tech-books': {
+      id: '/free-edu-tech-books'
+      path: '/free-edu-tech-books'
+      fullPath: '/free-edu-tech-books'
+      preLoaderRoute: typeof FreeEduTechBooksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/edu-tech-research': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   BooksRoute: BooksRoute,
   EduTechResearchRoute: EduTechResearchRoute,
+  FreeEduTechBooksRoute: FreeEduTechBooksRoute,
   MasterRoute: MasterRoute,
   PhdRoute: PhdRoute,
   ResearchRoute: ResearchRoute,

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { BookOpen, GraduationCap, FlaskConical, Shield, Home, Microscope } from "lucide-react";
+import { BookOpen, GraduationCap, FlaskConical, Shield, Home, Microscope, BookMarked } from "lucide-react";
 import facultyLogo from "@/assets/faculty-logo.jpeg";
 
 const links = [
@@ -9,6 +9,7 @@ const links = [
   { to: "/books", label: "الكتب", icon: BookOpen },
   { to: "/research", label: "الأبحاث العلمية", icon: FlaskConical },
   { to: "/edu-tech-research", label: "أبحاث تكنولوجيا التعليم", icon: Microscope },
+  { to: "/free-edu-tech-books", label: "الكتب المجانية في تكنولوجيا التعليم", icon: BookMarked },
 ] as const;
 
 export function Navbar() {
