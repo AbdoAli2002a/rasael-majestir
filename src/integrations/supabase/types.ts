@@ -97,6 +97,45 @@ export type Database = {
         }
         Relationships: []
       }
+      free_edu_tech_books: {
+        Row: {
+          author: string
+          created_at: string
+          description: string | null
+          download_url: string | null
+          id: string
+          serial_number: number | null
+          source: string | null
+          title: string
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          author: string
+          created_at?: string
+          description?: string | null
+          download_url?: string | null
+          id?: string
+          serial_number?: number | null
+          source?: string | null
+          title: string
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          author?: string
+          created_at?: string
+          description?: string | null
+          download_url?: string | null
+          id?: string
+          serial_number?: number | null
+          source?: string | null
+          title?: string
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
       library_items: {
         Row: {
           author: string
