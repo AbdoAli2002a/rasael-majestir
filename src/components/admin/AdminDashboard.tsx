@@ -3,14 +3,15 @@ import { supabase } from "@/integrations/supabase/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { LogOut, BookOpen, GraduationCap, FlaskConical, Inbox } from "lucide-react";
+import { LogOut, BookOpen, GraduationCap, FlaskConical, Inbox, Microscope } from "lucide-react";
 import { ITEM_TYPES, type ItemType } from "@/lib/library";
 import { ItemsManager } from "./ItemsManager";
 import { BorrowManager } from "./BorrowManager";
 import { ExcelUploader } from "./ExcelUploader";
+import { EduTechResearchManager } from "./EduTechResearchManager";
 
 export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
-  const [stats, setStats] = useState({ phd_thesis: 0, master_thesis: 0, book: 0, research: 0, pending: 0 });
+  const [stats, setStats] = useState({ phd_thesis: 0, master_thesis: 0, book: 0, research: 0, pending: 0, edu_tech: 0 });
 
   const loadStats = async () => {
     const counts: Record<string, number> = {};
@@ -19,7 +20,8 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
       counts[t] = count || 0;
     }
     const { count: pending } = await supabase.from("borrow_requests").select("*", { count: "exact", head: true }).eq("status", "pending");
-    setStats({ ...(counts as any), pending: pending || 0 });
+    const { count: eduTech } = await supabase.from("edu_tech_research").select("*", { count: "exact", head: true });
+    setStats({ ...(counts as any), pending: pending || 0, edu_tech: eduTech || 0 });
   };
 
   useEffect(() => { loadStats(); }, []);
@@ -29,6 +31,7 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
     { label: "رسائل ماجستير", value: stats.master_thesis, icon: GraduationCap },
     { label: "كتب", value: stats.book, icon: BookOpen },
     { label: "أبحاث علمية", value: stats.research, icon: FlaskConical },
+    { label: "أبحاث تكنولوجيا التعليم", value: stats.edu_tech, icon: Microscope },
     { label: "طلبات استعارة قيد المراجعة", value: stats.pending, icon: Inbox },
   ];
 
@@ -58,10 +61,12 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
         <TabsList>
           <TabsTrigger value="items">المحتوى</TabsTrigger>
           <TabsTrigger value="excel">رفع Excel</TabsTrigger>
+          <TabsTrigger value="edu_tech">أبحاث تكنولوجيا التعليم</TabsTrigger>
           <TabsTrigger value="borrow">طلبات الاستعارة</TabsTrigger>
         </TabsList>
         <TabsContent value="items"><ItemsManager onChange={loadStats} /></TabsContent>
         <TabsContent value="excel"><ExcelUploader onDone={loadStats} /></TabsContent>
+        <TabsContent value="edu_tech"><EduTechResearchManager onChange={loadStats} /></TabsContent>
         <TabsContent value="borrow"><BorrowManager onChange={loadStats} /></TabsContent>
       </Tabs>
     </div>

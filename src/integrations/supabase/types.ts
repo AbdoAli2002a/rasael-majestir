@@ -61,6 +61,42 @@ export type Database = {
           },
         ]
       }
+      edu_tech_research: {
+        Row: {
+          author: string
+          created_at: string
+          download_url: string | null
+          id: string
+          serial_number: number | null
+          source: string | null
+          title: string
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          author: string
+          created_at?: string
+          download_url?: string | null
+          id?: string
+          serial_number?: number | null
+          source?: string | null
+          title: string
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          author?: string
+          created_at?: string
+          download_url?: string | null
+          id?: string
+          serial_number?: number | null
+          source?: string | null
+          title?: string
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
       library_items: {
         Row: {
           author: string
