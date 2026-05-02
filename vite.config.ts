@@ -1,15 +1,12 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react"; // تم تغييرها من swc للنسخة القياسية
+import path from "path";
 
 export default defineConfig({
-  server: {
-    host: "::",
-    port: 8080,
-  },
   plugins: [react()],
   resolve: {
     alias: {
-      "@": "/src",
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   base: "/",
