@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { GraduationCap, BookOpen, FlaskConical, Library } from "lucide-react";
+import { GraduationCap, BookOpen, FlaskConical, Library, Microscope } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,6 +16,7 @@ const cats = [
   { to: "/master", title: "رسائل ماجستير", desc: "رسائل ماجستير في تكنولوجيا التعليم.", icon: GraduationCap },
   { to: "/books", title: "الكتب", desc: "مراجع علمية ومؤلفات أكاديمية.", icon: BookOpen },
   { to: "/research", title: "الأبحاث العلمية", desc: "أبحاث منشورة في دوريات علمية محكّمة.", icon: FlaskConical },
+  { to: "/edu-tech-research", title: "أبحاث تكنولوجيا التعليم", desc: "أبحاث متخصصة مع روابط تحميل مباشرة.", icon: Microscope },
 ] as const;
 
 function Home() {
