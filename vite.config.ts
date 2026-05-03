@@ -1,4 +1,3 @@
-import { defineConfig } from "vite";
-import { lovableTanstack } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig((env) => lovableTanstack(env));
+export default defineConfig({});
