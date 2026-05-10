@@ -83,6 +83,11 @@ export function EduTechResearchView() {
                     {it.serial_number}
                   </div>
                 )}
+                {it.item_code && (
+                  <div className="mb-2 inline-flex w-fit items-center gap-1 rounded-md bg-secondary px-2 py-0.5 font-mono text-xs font-medium text-secondary-foreground">
+                    {it.item_code}
+                  </div>
+                )}
                 <CardTitle className="line-clamp-3 text-lg leading-snug">{it.title}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm">
