@@ -58,8 +58,7 @@ export function EduTechResearchView() {
           <Input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="ابحث بالعنوان أو المؤلف أو المصدر..."
-
+            placeholder="ابحث بالكود أو العنوان أو المؤلف أو المصدر..."
             className="pr-10"
             aria-label="بحث في أبحاث تكنولوجيا التعليم"
           />
