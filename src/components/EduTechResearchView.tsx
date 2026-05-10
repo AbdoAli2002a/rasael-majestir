@@ -8,6 +8,7 @@ import { Search, FlaskConical, User, Calendar, Download, ExternalLink, Hash } fr
 export type EduResearch = {
   id: string;
   serial_number: number | null;
+  item_code: string | null;
   title: string;
   author: string;
   year: number | null;
@@ -39,6 +40,7 @@ export function EduTechResearchView() {
       (i) =>
         i.title.toLowerCase().includes(term) ||
         i.author.toLowerCase().includes(term) ||
+        (i.item_code ?? "").toLowerCase().includes(term) ||
         (i.source ?? "").toLowerCase().includes(term),
     );
   }, [items, q]);
@@ -56,7 +58,7 @@ export function EduTechResearchView() {
           <Input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="ابحث بالعنوان أو المؤلف أو المصدر..."
+            placeholder="ابحث بالكود أو العنوان أو المؤلف أو المصدر..."
             className="pr-10"
             aria-label="بحث في أبحاث تكنولوجيا التعليم"
           />
@@ -79,6 +81,11 @@ export function EduTechResearchView() {
                   <div className="mb-2 inline-flex w-fit items-center gap-1 rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
                     <Hash className="h-3 w-3" aria-hidden="true" />
                     {it.serial_number}
+                  </div>
+                )}
+                {it.item_code && (
+                  <div className="mb-2 inline-flex w-fit items-center gap-1 rounded-md bg-secondary px-2 py-0.5 font-mono text-xs font-medium text-secondary-foreground">
+                    {it.item_code}
                   </div>
                 )}
                 <CardTitle className="line-clamp-3 text-lg leading-snug">{it.title}</CardTitle>

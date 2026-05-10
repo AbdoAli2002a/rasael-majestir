@@ -12,14 +12,14 @@ import { toast } from "sonner";
 import { ITEM_TYPES, type ItemType, type LibraryItem } from "@/lib/library";
 
 const FIELDS: Record<ItemType, (keyof LibraryItem)[]> = {
-  phd_thesis: ["title", "author", "year", "supervisors", "sub_category"],
-  master_thesis: ["title", "author", "year", "supervisors", "sub_category"],
-  book: ["title", "author", "publication_place", "year", "publisher", "sub_category"],
-  research: ["title", "author", "journal_name", "volume", "issue", "year", "sub_category"],
+  phd_thesis: ["item_code", "title", "author", "year", "supervisors", "sub_category"],
+  master_thesis: ["item_code", "title", "author", "year", "supervisors", "sub_category"],
+  book: ["item_code", "title", "author", "publication_place", "year", "publisher", "sub_category"],
+  research: ["item_code", "title", "author", "journal_name", "volume", "issue", "year", "sub_category"],
 };
 
 const LABELS: Record<string, string> = {
-  title: "العنوان", author: "المؤلف", year: "سنة النشر", supervisors: "المشرفون",
+  item_code: "كود العنصر", title: "العنوان", author: "المؤلف", year: "سنة النشر", supervisors: "المشرفون",
   sub_category: "التصنيف الفرعي", publication_place: "مكان النشر", publisher: "الناشر",
   journal_name: "اسم الدورية", volume: "المجلد", issue: "العدد",
 };
@@ -86,6 +86,7 @@ export function ItemsManager({ onChange }: { onChange: () => void }) {
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead className="text-right">الكود</TableHead>
                 <TableHead className="text-right">العنوان</TableHead>
                 <TableHead className="text-right">المؤلف</TableHead>
                 <TableHead className="text-right">السنة</TableHead>
@@ -94,9 +95,10 @@ export function ItemsManager({ onChange }: { onChange: () => void }) {
             </TableHeader>
             <TableBody>
               {items.length === 0 ? (
-                <TableRow><TableCell colSpan={4} className="py-10 text-center text-muted-foreground">لا توجد عناصر</TableCell></TableRow>
+                <TableRow><TableCell colSpan={5} className="py-10 text-center text-muted-foreground">لا توجد عناصر</TableCell></TableRow>
               ) : items.map((it) => (
                 <TableRow key={it.id}>
+                  <TableCell className="font-mono text-xs">{it.item_code ?? "-"}</TableCell>
                   <TableCell className="max-w-md truncate font-medium">{it.title}</TableCell>
                   <TableCell>{it.author}</TableCell>
                   <TableCell>{it.year ?? "-"}</TableCell>

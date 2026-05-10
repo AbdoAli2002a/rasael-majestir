@@ -35,7 +35,11 @@ export function CategoryView({ type }: { type: ItemType }) {
     return items.filter((i) => {
       if (sub !== "all" && i.sub_category !== sub) return false;
       if (!term) return true;
-      return i.title.toLowerCase().includes(term) || i.author.toLowerCase().includes(term);
+      return (
+        i.title.toLowerCase().includes(term) ||
+        i.author.toLowerCase().includes(term) ||
+        (i.item_code ?? "").toLowerCase().includes(term)
+      );
     });
   }, [items, q, sub]);
 
@@ -49,7 +53,7 @@ export function CategoryView({ type }: { type: ItemType }) {
       <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-center">
         <div className="relative flex-1">
           <Search className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="ابحث بالعنوان أو المؤلف..." className="pr-10" />
+          <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="ابحث بالكود أو العنوان أو المؤلف..." className="pr-10" />
         </div>
         {subs.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
@@ -74,6 +78,11 @@ export function CategoryView({ type }: { type: ItemType }) {
             <Card key={it.id} className="group transition hover:shadow-[var(--shadow-elegant)]">
               <CardHeader>
                 {it.sub_category && <Badge variant="secondary" className="mb-2 w-fit">{it.sub_category}</Badge>}
+                {it.item_code && (
+                  <div className="mb-1 inline-flex w-fit items-center gap-1 rounded-md bg-primary/10 px-2 py-0.5 font-mono text-xs font-medium text-primary">
+                    {it.item_code}
+                  </div>
+                )}
                 <CardTitle className="line-clamp-2 text-lg leading-snug">{it.title}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm">

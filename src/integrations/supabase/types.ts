@@ -67,6 +67,7 @@ export type Database = {
           created_at: string
           download_url: string | null
           id: string
+          item_code: string | null
           serial_number: number | null
           source: string | null
           title: string
@@ -78,6 +79,7 @@ export type Database = {
           created_at?: string
           download_url?: string | null
           id?: string
+          item_code?: string | null
           serial_number?: number | null
           source?: string | null
           title: string
@@ -89,6 +91,7 @@ export type Database = {
           created_at?: string
           download_url?: string | null
           id?: string
+          item_code?: string | null
           serial_number?: number | null
           source?: string | null
           title?: string
@@ -104,6 +107,7 @@ export type Database = {
           description: string | null
           download_url: string | null
           id: string
+          item_code: string | null
           serial_number: number | null
           source: string | null
           title: string
@@ -116,6 +120,7 @@ export type Database = {
           description?: string | null
           download_url?: string | null
           id?: string
+          item_code?: string | null
           serial_number?: number | null
           source?: string | null
           title: string
@@ -128,6 +133,7 @@ export type Database = {
           description?: string | null
           download_url?: string | null
           id?: string
+          item_code?: string | null
           serial_number?: number | null
           source?: string | null
           title?: string
@@ -142,6 +148,7 @@ export type Database = {
           created_at: string
           id: string
           issue: string | null
+          item_code: string | null
           journal_name: string | null
           publication_place: string | null
           publisher: string | null
@@ -158,6 +165,7 @@ export type Database = {
           created_at?: string
           id?: string
           issue?: string | null
+          item_code?: string | null
           journal_name?: string | null
           publication_place?: string | null
           publisher?: string | null
@@ -174,6 +182,7 @@ export type Database = {
           created_at?: string
           id?: string
           issue?: string | null
+          item_code?: string | null
           journal_name?: string | null
           publication_place?: string | null
           publisher?: string | null

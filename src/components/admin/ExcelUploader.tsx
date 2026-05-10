@@ -12,6 +12,7 @@ import { ITEM_TYPES, type ItemType } from "@/lib/library";
 
 // Map common Arabic & English column headers -> DB fields
 const COL_MAP: Record<string, string> = {
+  "الكود": "item_code", "كود": "item_code", "كود الكتاب": "item_code", "كود البحث": "item_code", "كود الرسالة": "item_code", "item_code": "item_code", "code": "item_code",
   "العنوان": "title", "title": "title",
   "المؤلف": "author", "author": "author",
   "سنة النشر": "year", "السنة": "year", "year": "year",

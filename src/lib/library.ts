@@ -15,6 +15,7 @@ export type LibraryItem = {
   author: string;
   year: number | null;
   sub_category: string | null;
+  item_code: string | null;
   supervisors: string | null;
   publication_place: string | null;
   publisher: string | null;

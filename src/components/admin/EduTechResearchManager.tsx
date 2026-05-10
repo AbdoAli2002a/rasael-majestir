@@ -14,6 +14,7 @@ import type { EduResearch } from "@/components/EduTechResearchView";
 // Map common Arabic & English column headers -> DB fields
 const COL_MAP: Record<string, string> = {
   "الرقم": "serial_number", "م": "serial_number", "رقم": "serial_number", "serial_number": "serial_number", "no": "serial_number",
+  "الكود": "item_code", "كود": "item_code", "كود البحث": "item_code", "item_code": "item_code", "code": "item_code",
   "العنوان": "title", "اسم البحث": "title", "title": "title",
   "المؤلف": "author", "اسم المؤلف": "author", "author": "author",
   "السنة": "year", "سنة النشر": "year", "year": "year",
@@ -49,6 +50,7 @@ export function EduTechResearchManager({ onChange }: { onChange?: () => void }) 
     }
     const payload = {
       serial_number: editing.serial_number ? Number(editing.serial_number) : null,
+      item_code: editing.item_code || null,
       title: editing.title,
       author: editing.author,
       year: editing.year ? Number(editing.year) : null,
@@ -142,6 +144,7 @@ export function EduTechResearchManager({ onChange }: { onChange?: () => void }) 
               <TableHeader>
                 <TableRow>
                   <TableHead className="text-right">الرقم</TableHead>
+                  <TableHead className="text-right">الكود</TableHead>
                   <TableHead className="text-right">العنوان</TableHead>
                   <TableHead className="text-right">المؤلف</TableHead>
                   <TableHead className="text-right">السنة</TableHead>
@@ -153,11 +156,12 @@ export function EduTechResearchManager({ onChange }: { onChange?: () => void }) 
               <TableBody>
                 {items.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={7} className="py-10 text-center text-muted-foreground">لا توجد أبحاث</TableCell>
+                    <TableCell colSpan={8} className="py-10 text-center text-muted-foreground">لا توجد أبحاث</TableCell>
                   </TableRow>
                 ) : items.map((it) => (
                   <TableRow key={it.id}>
                     <TableCell>{it.serial_number ?? "-"}</TableCell>
+                    <TableCell className="font-mono text-xs">{it.item_code ?? "-"}</TableCell>
                     <TableCell className="max-w-xs truncate font-medium">{it.title}</TableCell>
                     <TableCell className="max-w-[10rem] truncate">{it.author}</TableCell>
                     <TableCell>{it.year ?? "-"}</TableCell>
@@ -208,6 +212,13 @@ export function EduTechResearchManager({ onChange }: { onChange?: () => void }) 
                     type="number"
                     value={editing?.year ?? ""}
                     onChange={(e) => setEditing({ ...editing, year: e.target.value ? Number(e.target.value) : null })}
+                  />
+                </div>
+                <div className="grid gap-1.5 sm:col-span-2">
+                  <Label>كود البحث</Label>
+                  <Input
+                    value={editing?.item_code ?? ""}
+                    onChange={(e) => setEditing({ ...editing, item_code: e.target.value })}
                   />
                 </div>
                 <div className="grid gap-1.5 sm:col-span-2">
