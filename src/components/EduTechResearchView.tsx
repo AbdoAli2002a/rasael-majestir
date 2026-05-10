@@ -8,6 +8,7 @@ import { Search, FlaskConical, User, Calendar, Download, ExternalLink, Hash } fr
 export type EduResearch = {
   id: string;
   serial_number: number | null;
+  item_code: string | null;
   title: string;
   author: string;
   year: number | null;
@@ -39,6 +40,7 @@ export function EduTechResearchView() {
       (i) =>
         i.title.toLowerCase().includes(term) ||
         i.author.toLowerCase().includes(term) ||
+        (i.item_code ?? "").toLowerCase().includes(term) ||
         (i.source ?? "").toLowerCase().includes(term),
     );
   }, [items, q]);
